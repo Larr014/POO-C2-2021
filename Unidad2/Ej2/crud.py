@@ -1,4 +1,6 @@
 import mysql.connector
+from Persona import *
+
 
 credenciales = {
     'host':'localhost',
@@ -25,3 +27,17 @@ def mostrar_personas():
     print("---------Resultados----------")
     for fila in resultados:
         print(f'{fila[0]} {fila[1]}')
+
+def buscar_persona(id):
+    query = "SELECT * FROM people WHERE id=%s"
+    values = (id,)
+    cursor.execute(query,values)
+    #Despues de un execute en un select se deben recuperar los resultados
+    resultado = cursor.fetchone()
+    print(resultado)
+    p = Persona(resultado[1],resultado[2],resultado[3],resultado[4],resultado[5],resultado[6],resultado[7],resultado[0])
+    return p
+
+def modificar_persona(p):
+    #Completar los campos que se quieren actualizar
+    query = "UPDATE people SET fullname = %s,profession = %s WHERE id = %s"

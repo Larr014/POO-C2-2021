@@ -1,13 +1,14 @@
 class Persona:
 
-    def __init__(self):
-        self.__fullname = input("Ingrese nombre: ")
-        self.__profession = input("Ingrese profesion: ")
-        self.__birth = input("Ingrese fecha de nacimiento: (Año-Mes-Dia) ")
-        self.__genre = input("Ingrese su genero: (M/F) ").upper()
-        self.__bodyweight = float(input("Ingrese peso: "))
-        self.__height = float(input("Ingrese altura: "))
-        self.__nationality = input("Ingrese nacionalidad: ")
+    def __init__(self,fullname,profession,birth,genre,bodyweight,height,nationality,id=""):
+        self.__fullname = fullname
+        self.__profession = profession
+        self.__birth = birth
+        self.__genre = genre
+        self.__bodyweight = bodyweight
+        self.__height = height
+        self.__nationality = nationality
+        self.__id = id 
 
     def get_fullname(self):
         return self.__fullname
@@ -29,3 +30,25 @@ class Persona:
 
     def get_nationality(self):
         return self.__nationality
+
+    def set_fullname(self,fullname):
+        self.__fullname = fullname
+    
+    def set_profession(self,profession):
+        self.__profession = profession
+
+    def set_genre(self,genre):
+        self.__genre = genre
+
+    def set_birth(self,birth):
+        self.__birth = birth
+
+    def set_bodyweight(self,bodyweight):
+        self.__bodyweight = bodyweight
+
+    def set_height(self,height):
+        self.__height = height
+    
+    def set_nationality(self,nationality):
+        self.__nationality = nationality
+    
