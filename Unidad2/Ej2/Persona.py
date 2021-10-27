@@ -31,6 +31,9 @@ class Persona:
     def get_nationality(self):
         return self.__nationality
 
+    def get_id(self):
+        return self.__id
+
     def set_fullname(self,fullname):
         self.__fullname = fullname
     
@@ -51,4 +54,7 @@ class Persona:
     
     def set_nationality(self,nationality):
         self.__nationality = nationality
+
+    def set_id(self,id):
+        self.__id = id
     

@@ -34,10 +34,23 @@ def buscar_persona(id):
     cursor.execute(query,values)
     #Despues de un execute en un select se deben recuperar los resultados
     resultado = cursor.fetchone()
-    print(resultado)
-    p = Persona(resultado[1],resultado[2],resultado[3],resultado[4],resultado[5],resultado[6],resultado[7],resultado[0])
-    return p
-
+    
+    if resultado != None: #Si realmente encontro algo
+        print(resultado)
+        p = Persona(resultado[1],resultado[2],resultado[3],resultado[4],resultado[5],resultado[6],resultado[7],resultado[0])
+        return p
+    else:
+        print("No se encontro a la persona")
 def modificar_persona(p):
     #Completar los campos que se quieren actualizar
-    query = "UPDATE people SET fullname = %s,profession = %s WHERE id = %s"
+    query = "UPDATE people SET fullname = %s,profession = %s,birth = %s, genre=%s,bodyweight=%s,height =%s,nationality=%s  WHERE id = %s"
+    values = (p.get_fullname(),p.get_profession(),p.get_birth(),p.get_genre(),p.get_bodyweight(),p.get_height(),p.get_nationality(),p.get_id())
+    #Binding
+    cursor.execute(query,values)
+    conexion.commit()
+
+def eliminar_persona(p):
+    query = "DELETE FROM people WHERE id = %s"
+    values = (p.get_id(),)
+    cursor.execute(query,values)
+    conexion.commit()
